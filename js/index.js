@@ -41,7 +41,7 @@ const catchPromise = (response) => {
 const handleSubmit = (event) => {
     event.preventDefault();
 
-    const serverUrl = 'http://api.openweathermap.org/data/2.5/weather';
+    const serverUrl = 'https://api.openweathermap.org/data/2.5/weather';
     const cityName = event.target.city.value.trim();
     const apiKey = 'f660a2fb1e4bad108d6160b7f58c555f';
     const url = `${serverUrl}?q=${cityName}&appid=${apiKey}&units=metric`;
