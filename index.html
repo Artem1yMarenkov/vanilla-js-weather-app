@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <title>Weather App</title>
+</head>
+<body>
+    <div class="app">
+        <form class="search-form">
+            <input type="text" placeholder="Aktobe" name="city">
+            <button><img src="./search.svg" alt=""></button>
+        </form>
+        <div class="weather-info">
+            <div class="slide _active" data-action="1">
+                <h1 class="up-stare temperature">14</h1>
+                <img class="weather-icon" src="./cloud.svg" alt="">
+                <div class="down-stare">
+                    <h2 class="city-name">Aktobe</h2>
+                    <button class="add-favourite">
+                        <img src="./favourite.svg" alt="">
+                    </button>
+                </div>
+            </div>
+            <div class="slide" data-action="2">
+                <h2 class="city-name">Aktobe</h2>
+                <div class="details">
+                    <h2>Temperature: 14</h2>
+                    <h2>Feels like: 10</h2>
+                    <h2>Weather: Clouds</h2>
+                    <h2>Sunrise: 03:21</h2>
+                    <h2>Sunset: 18:54</h2>
+                </div>
+            </div>
+            <div class="slide" data-action="3">
+                <h2 class="city-name">Aktobe</h2>
+                <div class="forcast">
+                    <div class="forecast-item">
+                        <div class="date-time">
+                            <p class="date">17 may</p>
+                            <p class="time">12:00</p>
+                        </div>
+
+                        <div class="temp-forecast">
+                            <div class="temp">
+                                <p>Temperature: 13</p>
+                                <p>Feels like: 10</p>
+                            </div>
+                            <div class="forecast-info">
+                                <p>Rain</p>
+                                <img src="./rain.svg" alt="rain">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="forecast-item">
+                        <div class="date-time">
+                            <p class="date">17 may</p>
+                            <p class="time">12:00</p>
+                        </div>
+
+                        <div class="temp-forecast">
+                            <div class="temp">
+                                <p>Temperature: 13</p>
+                                <p>Feels like: 10</p>
+                            </div>
+                            <div class="forecast-info">
+                                <p>Rain</p>
+                                <img src="./rain.svg" alt="rain">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="forecast-item">
+                        <div class="date-time">
+                            <p class="date">17 may</p>
+                            <p class="time">12:00</p>
+                        </div>
+
+                        <div class="temp-forecast">
+                            <div class="temp">
+                                <p>Temperature: 13</p>
+                                <p>Feels like: 10</p>
+                            </div>
+                            <div class="forecast-info">
+                                <p>Rain</p>
+                                <img src="./rain.svg" alt="rain">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab _active" data-action="1">Now</button>
+                <button class="tab" data-action="2">Details</button>
+                <button class="tab" data-action="3">Forecast</button>
+            </div>
+        </div>
+        <div class="added-locations">
+            <h2>Added Locations:</h2>
+            <hr>
+            <ul>
+                <li><button>Amur</button></li>
+                <li><button>Samara</button></li>
+                <li><button>Bali</button></li>
+                <li><button>Samara</button></li>
+                <li><button>Bali</button></li>
+            </ul>
+        </div>
+    </div>
+    <script src="index.js" type="module"></script>
+</body>
+</html>

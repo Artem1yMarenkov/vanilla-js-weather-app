@@ -1,0 +1,223 @@
+::-webkit-scrollbar {
+    width: 2px; 
+    background-color: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #000000;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 70px;
+    margin: 0;
+    margin-left: 20px;
+}
+
+h2, h3, h4, h5, h6 {
+    font-weight: 300;
+    margin: 0;
+    margin: 10px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+p {
+    margin: 0;
+    font-size: 18px;
+}
+
+button {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+/* App styles */
+.app {
+    width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+}
+
+
+
+/* Form styles */
+.search-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.search-form input, .search-form button {
+    outline: none;
+    border: 0;
+}
+
+.search-form input {
+    width: 90%;
+    font-size: 18px;
+    padding: 10px 15px;
+}
+
+.search-form button {
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+}
+
+.search-form button img {
+    width: 100%;
+}
+
+
+
+/* Weather Info styles */
+.weather-info {
+    height: 390px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    border-right: 1px solid black;
+}
+
+.weather-info .slide {
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    padding: 20px 20px 0 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.weather-info .slide[data-action="1"] {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weather-info .slide._active {
+    display: flex;
+}
+
+.weather-info .slide h2 {
+    width: 100%;
+}
+
+h1 {
+    width: 100%;
+}
+
+.weather-info .details {
+    margin-top: 40px;
+}
+
+.weather-info  .slide .down-stare {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.weather-info .tabs {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid black;
+}
+
+.weather-info .tabs button {
+    width: 33.333333333%;
+    padding: 20px 12px;
+}
+
+.weather-info .tabs .tab[data-action="2"] {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.weather-info .tabs button._active {
+    color: white;
+    background: black;
+}
+
+.forecast-item {
+    width: 100%;
+    height: 100px;
+    padding: 6px 12px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 9px;
+}
+
+.forecast-item .date-time {
+    display: flex;
+    justify-content: space-between;
+}
+
+.forecast-item .temp-forecast {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forecast-item .temp-forecast .forecast-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+/* Added Locations styles */
+.added-locations {
+    width: 50%;
+}
+
+.added-locations h2 {
+    margin-top: 20px;
+}
+
+.added-locations hr {
+    height: 1px;
+    background: black;
+    border: 0;
+}
+
+.added-locations ul {
+    padding: 0;
+    margin: 35px 18px;
+}
+
+.added-locations ul li {
+    list-style: none;
+}
+
+.added-locations ul li button {
+    font-size: 24px;
+    font-weight: 300;
+    margin-top: 20px;
+}
