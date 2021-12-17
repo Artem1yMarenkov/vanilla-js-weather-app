@@ -1,9 +1,5 @@
 import UIComponents from "./view.js";
 
-const tabs = UIComponents.tabs;
-const slides = UIComponents.slides;
-let activeTab = UIComponents.activeTab;
-
 
 const setData = (data) => {
     [...UIComponents.cityNameField].forEach(el => el.innerHTML = data["name"]);
@@ -11,22 +7,12 @@ const setData = (data) => {
     UIComponents.weatherIcon.src = `https://openweathermap.org/img/wn/${data['weather'][0]['icon']}@2x.png`;
 }
 
-
-const catchError = (error) => {
-    if (error == 'TypeError: Failed to fetch') {
-        alert('Request error!')
-    } else {
-        alert(error);
-    }
-}
-
-
-const catchPromise = (response) => {
-    const status = Number(response["cod"]);
+const catchResult = (result) => {
+    const status = Number(result["cod"]);
 
     switch(status) {
         case 200:
-            setData(response);
+            setData(result);
             break
         case 404:
             throw 'Incorrect city name'
@@ -37,6 +23,28 @@ const catchPromise = (response) => {
     }
 }
 
+const catchError = (error) => {
+    if (error == 'TypeError: Failed to fetch') {
+        alert('Request error!')
+    } else {
+        alert(error);
+    }
+}
+
+
+const setTab = (event) => {
+    const slideId = event.target.getAttribute('data-action');
+
+    [...UIComponents.slides].forEach(element => {
+        if (element.classList.contains('_active')) element.classList.remove('_active');
+
+        if (element.getAttribute('data-action') === slideId) element.classList.add('_active');
+    });
+
+    UIComponents.activeTab.classList.remove('_active');
+    event.target.classList.add('_active');
+    UIComponents.activeTab = event.target;
+}
 
 const handleSubmit = (event) => {
     event.preventDefault();
@@ -49,7 +57,7 @@ const handleSubmit = (event) => {
     if (cityName.length > 2) {
         fetch(url)
             .then(response => response.json())
-            .then(result => catchPromise(result))
+            .then(result => catchResult(result))
             .catch(error => catchError(error));
     } else {
         alert('Incorrect city name');
@@ -59,21 +67,6 @@ const handleSubmit = (event) => {
 }
 
 
-const setTab = (event) => {
-    const slideId = event.target.getAttribute('data-action');
-
-    [...slides].forEach(element => {
-        if (element.classList.contains('_active')) element.classList.remove('_active');
-
-        if (element.getAttribute('data-action') === slideId) element.classList.add('_active');
-    });
-
-    activeTab.classList.remove('_active');
-    event.target.classList.add('_active');
-    activeTab = event.target;
-}
-
-
-[...tabs].forEach( el => el.addEventListener('click', setTab));
+[...UIComponents.tabs].forEach( el => el.addEventListener('click', setTab));
 
 UIComponents.form.addEventListener('submit', handleSubmit);
