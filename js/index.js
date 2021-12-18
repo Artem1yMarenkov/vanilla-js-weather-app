@@ -15,7 +15,7 @@ function checkHeart() {
 
 function setHTML(data) {
     UIComponents.cityNameField.forEach(el => el.innerHTML = data["name"]);
-    UIComponents.tempField.innerHTML = Math.round(data['main']['temp']);
+    UIComponents.tempField.innerHTML = `${Math.round(data['main']['temp'])}°`;
     UIComponents.weatherIcon.src = `https://openweathermap.org/img/wn/${data['weather'][0]['icon']}@2x.png`;
 
     checkHeart();

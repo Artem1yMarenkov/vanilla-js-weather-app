@@ -126,6 +126,10 @@ button {
     width: 100%;
 }
 
+.weather-icon {
+    width: 120px;
+}
+
 h1 {
     width: 100%;
 }
@@ -225,14 +229,18 @@ h1 {
 .added-locations ul li button {
     font-size: 24px;
     font-weight: 300;
-    margin-top: 20px;
 }
 
 .favourite-item {
+    transition: 0.1s;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-weight: 100;
+}
+
+.favourite-item:hover {
+    background: rgb(241, 241, 241);
 }
 
 .favourite-cross {
