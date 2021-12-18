@@ -5,7 +5,9 @@ const UIComponents = {
     form: document.querySelector('.search-form'),
     cityNameField: document.querySelectorAll('.city-name'),
     tempField: document.querySelector('.temperature'),
-    weatherIcon: document.querySelector('.weather-icon')
+    weatherIcon: document.querySelector('.weather-icon'),
+    addFavouriteBtn: document.querySelector('.add-favourite'),
+    favouritesList: document.querySelector('.favourites'),
 }
 
 export default UIComponents;

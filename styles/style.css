@@ -190,11 +190,17 @@ h1 {
     align-items: center;
 }
 
+.add-favourite._active .heart {
+    fill: red;
+}
+
 
 
 /* Added Locations styles */
 .added-locations {
     width: 50%;
+    overflow-y: scroll;
+    height: 390px;
 }
 
 .added-locations h2 {
@@ -220,4 +226,16 @@ h1 {
     font-size: 24px;
     font-weight: 300;
     margin-top: 20px;
+}
+
+.favourite-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 100;
+}
+
+.favourite-cross {
+    font-size: 36px !important;
+    transform: rotate(45deg);
 }
