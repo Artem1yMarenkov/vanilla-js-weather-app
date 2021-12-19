@@ -203,7 +203,6 @@ h1 {
 /* Added Locations styles */
 .added-locations {
     width: 50%;
-    overflow-y: scroll;
     height: 390px;
 }
 
@@ -219,7 +218,10 @@ h1 {
 
 .added-locations ul {
     padding: 0;
-    margin: 35px 18px;
+    padding: 35px 18px;
+    height: 100%;
+    overflow-y: scroll;
+    height: 310px;
 }
 
 .added-locations ul li {
