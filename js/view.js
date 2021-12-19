@@ -3,14 +3,15 @@ import API from "./API.js";
 const UI = {
     tabs: document.querySelectorAll('.tab'),
     slides: document.querySelectorAll('.slide'),
+    cityNameFields: document.querySelectorAll('.city-name'),
+    favouriteItems: [...document.querySelectorAll('.favourite-item')],
+
     activeTab: document.querySelector('.tab._active'),
     form: document.querySelector('.search-form'),
-    cityNameFields: document.querySelectorAll('.city-name'),
     tempField: document.querySelector('.temperature'),
     weatherIcon: document.querySelector('.weather-icon'),
     addFavouriteBtn: document.querySelector('.add-favourite'),
     favouritesList: document.querySelector('.favourites'),
-    favouriteItems: [...document.querySelectorAll('.favourite-item')],
 }
 
 const ADDED_LOCATIONS = ['Kirov', 'Kazan’'];
@@ -29,7 +30,7 @@ function checkHeart() {
 
 function setHTML(data) {
     UI.cityNameFields.forEach(el => el.innerHTML = data["name"]);
-    UI.tempField.innerHTML = `${Math.round(data['main']['temp'])}°`;
+    UI.tempField.innerHTML = `${Math.round(data['main']['temp'])}&#176`;
     UI.weatherIcon.src = `https://openweathermap.org/img/wn/${data['weather'][0]['icon']}@2x.png`;
 
     checkHeart();
@@ -48,24 +49,6 @@ function setTab(event) {
     UI.activeTab.classList.remove('_active');
     event.target.classList.add('_active');
     UI.activeTab = event.target;
-}
-
-
-function renderFavourites() {
-    UI.favouritesList.innerHTML = '';
-    
-    ADDED_LOCATIONS.forEach(city => {
-        const favouriteItem = document.createElement('li');
-
-        favouriteItem.className = 'favourite-item';
-        favouriteItem.innerHTML = `
-                <button class="favourite-city-name" >${city}</button>
-                <button class="favourite-cross">+</button>
-            `;
-        favouriteItem.addEventListener('click', handleClick);
-
-        UI.favouritesList.appendChild(favouriteItem);
-    });
 }
 
 
@@ -90,6 +73,25 @@ function removeFavourite(element) {
     renderFavourites();
 }
 
+
+function renderFavourites() {
+    UI.favouritesList.innerHTML = '';
+    
+    ADDED_LOCATIONS.forEach(city => {
+        const favouriteItem = document.createElement('li');
+
+        favouriteItem.className = 'favourite-item';
+        favouriteItem.innerHTML = `
+                <button class="favourite-city-name" >${city}</button>
+                <button class="favourite-cross">+</button>
+            `;
+        favouriteItem.addEventListener('click', handleClick);
+
+        UI.favouritesList.appendChild(favouriteItem);
+    });
+}
+
+
 function handleSubmit(event) {
     event.preventDefault();
 
@@ -99,6 +101,7 @@ function handleSubmit(event) {
     event.target.reset();
 }
 
+
 function handleClick(event) {
     if (event.target.className == 'favourite-cross') {
         removeFavourite(event.target);
@@ -107,8 +110,10 @@ function handleClick(event) {
         const cityName = event.target.textContent;
         API.sendRequest(cityName, setHTML);
     }
+    
     checkHeart();
 }
+
 
 function handleLoad() {
     const cityName = UI.cityNameFields[0].textContent;
@@ -116,6 +121,7 @@ function handleLoad() {
 
     renderFavourites();
 }
+
 
 UI.addFavouriteBtn.addEventListener('click', addFavourite);
 UI.tabs.forEach(el => el.addEventListener('click', setTab));

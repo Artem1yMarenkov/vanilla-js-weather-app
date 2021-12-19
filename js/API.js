@@ -17,6 +17,7 @@ function catchResult(result, onSuccess) {
     }
 }
 
+
 function catchError(error) {
     if (error == 'TypeError: Failed to fetch') {
         alert('Request error!')
@@ -24,6 +25,7 @@ function catchError(error) {
         alert(error);
     }
 }
+
 
 function sendRequest(cityName, onSuccess) {
     const URL = `${SERVER.URL}?q=${cityName}&appid=${SERVER.API_KEY}&units=metric`;
