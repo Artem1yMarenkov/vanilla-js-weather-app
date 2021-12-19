@@ -110,8 +110,15 @@ function handleClick(event) {
     checkHeart();
 }
 
+function handleLoad() {
+    const cityName = UI.cityNameFields[0].textContent;
+    API.sendRequest(cityName, setHTML);
+
+    renderFavourites();
+}
+
 UI.addFavouriteBtn.addEventListener('click', addFavourite);
 UI.tabs.forEach(el => el.addEventListener('click', setTab));
-
-document.addEventListener('DOMContentLoaded', renderFavourites);
 UI.form.addEventListener('submit', handleSubmit);
+
+document.addEventListener('DOMContentLoaded', handleLoad);
