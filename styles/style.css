@@ -152,8 +152,14 @@ h1 {
 }
 
 .weather-info .tabs button {
+    transition: 0.2s;
     width: 33.333333333%;
     padding: 20px 12px;
+}
+
+.weather-info .tabs button:hover {
+    background: #404040;
+    color: white;
 }
 
 .weather-info .tabs .tab[data-action="2"] {
