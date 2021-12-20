@@ -9,6 +9,7 @@ function catchResult(result, onSuccess) {
     switch(status) {
         case 200:
             onSuccess(result);
+            console.log(result);
             break
         case 404: 
             throw new Error('Incorrect city name!');
@@ -33,10 +34,10 @@ function sendRequest(cityName, onSuccess) {
             .then(response => response.json())
             .then(result => catchResult(result, onSuccess))
             .catch(catchError);
-    } else {
-        alert('Incorrect city name');
+        } else {
+            alert('Incorrect city name');
+        }
     }
-}
-
-
+    
+    
 export default { SERVER, sendRequest, catchResult, catchError };

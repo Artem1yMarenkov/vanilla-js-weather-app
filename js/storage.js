@@ -9,7 +9,7 @@ const Storage = {
 
         if (!testStorage) {
             localStorage.setItem( action, JSON.stringify([]) );
-            console.log('Storage has been created!')
+            console.log(`${action} storage has been created!`);
         }
 
         const storage = JSON.parse(localStorage.getItem(action));
@@ -36,7 +36,7 @@ function addFavouriteLocation(cityName) {
 
 
 function deleteFavouriteLocation(cityName) {
-    const storage = getStorage(ACTIONS.favLocations);
+    const storage = Storage.get(ACTIONS.favLocations);
     const index = storage.indexOf(cityName);
 
     storage.splice(index, 1);
@@ -48,7 +48,6 @@ function deleteFavouriteLocation(cityName) {
 function getFavouriteLocations() {
     return Storage.get(ACTIONS.favLocations);
 }
-
 
 
 function setLastLocation(cityName) {

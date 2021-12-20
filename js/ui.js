@@ -13,8 +13,8 @@ const UI = {
     
     feelsLike: document.querySelector('.feels-like'),
     weather: document.querySelector('.weather'),
-    sunRise: document.querySelector('.sun-rise'),
-    sunSet: document.querySelector('.sun-set'),
+    sunRise: document.querySelector('.sunrise'),
+    sunSet: document.querySelector('.sunset'),
 }
 
 export default UI;
