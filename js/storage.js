@@ -63,7 +63,6 @@ function getLastLocation() {
         const cityName = 'Aktobe';
         
         Storage.set(ACTIONS.lastLocation, cityName);
-        
     } 
 
     return getStorage(ACTIONS.lastLocation);
