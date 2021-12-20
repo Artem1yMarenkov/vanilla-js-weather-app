@@ -65,7 +65,7 @@ function getLastLocation() {
         Storage.set(ACTIONS.lastLocation, cityName);
     } 
 
-    return getStorage(ACTIONS.lastLocation);
+    return Storage.get(ACTIONS.lastLocation);
 }
 
 
