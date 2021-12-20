@@ -19,11 +19,9 @@ function catchResult(result, onSuccess) {
 
 
 function catchError(error) {
-    if (error == 'TypeError: Failed to fetch') {
-        alert('Request error!')
-    } else {
-        alert(error);
-    }
+    error == 'TypeError: Failed to fetch' 
+        ? alert('Request error!') 
+        : alert(error)
 }
 
 
@@ -33,7 +31,7 @@ function sendRequest(cityName, onSuccess) {
     if (cityName.length > 2) {
         fetch(URL)
             .then(response => response.json())
-            .then((result) => catchResult(result, onSuccess))
+            .then(result => catchResult(result, onSuccess))
             .catch(catchError);
     } else {
         alert('Incorrect city name');

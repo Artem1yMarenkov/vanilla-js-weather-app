@@ -1,4 +1,5 @@
-import API from "./API.js";
+import API from "./api.js";
+import STORAGE from "./storage.js";
 
 const UI = {
     tabs: document.querySelectorAll('.tab'),
@@ -13,8 +14,6 @@ const UI = {
     addFavouriteBtn: document.querySelector('.add-favourite'),
     favouritesList: document.querySelector('.favourites'),
 }
-
-const ADDED_LOCATIONS = ['Kirov', 'Kazan’'];
 
 
 function checkHeart() {
@@ -33,6 +32,7 @@ function setHTML(data) {
     UI.tempField.innerHTML = `${Math.round(data['main']['temp'])}&#176`;
     UI.weatherIcon.src = `https://openweathermap.org/img/wn/${data['weather'][0]['icon']}@2x.png`;
 
+    STORAGE.setLastLocation(data['name']);
     checkHeart();
 }
 
@@ -54,30 +54,28 @@ function setTab(event) {
 
 function addFavourite() {
     const cityName = UI.cityNameFields[0].textContent;
-    const replys = ADDED_LOCATIONS.includes(cityName);
+    STORAGE.addFavouriteLocation(cityName);
 
-    if (!replys) {
-        ADDED_LOCATIONS.push(cityName);
-        renderFavourites();
-    }
-
+    renderFavourites();
     checkHeart();
 }
 
 
 function removeFavourite(element) {
     const cityName = element.parentNode.childNodes[1].textContent;
-    const index = ADDED_LOCATIONS.indexOf(cityName);
-    ADDED_LOCATIONS.splice(index, 1);
+    
+    STORAGE.deleteFavouriteLocation(cityName);
 
     renderFavourites();
 }
 
 
+
 function renderFavourites() {
     UI.favouritesList.innerHTML = '';
+    const locations = STORAGE.getFavouriteLocations();
     
-    ADDED_LOCATIONS.forEach(city => {
+    locations.forEach(city => {
         const favouriteItem = document.createElement('li');
 
         favouriteItem.className = 'favourite-item';
@@ -90,6 +88,7 @@ function renderFavourites() {
         UI.favouritesList.appendChild(favouriteItem);
     });
 }
+
 
 
 function handleSubmit(event) {
@@ -106,6 +105,7 @@ function handleClick(event) {
     if (event.target.className == 'favourite-cross') {
         removeFavourite(event.target);
     }
+    
     if (event.target.className == 'favourite-city-name') {
         const cityName = event.target.textContent;
         API.sendRequest(cityName, setHTML);
@@ -116,7 +116,7 @@ function handleClick(event) {
 
 
 function handleLoad() {
-    const cityName = UI.cityNameFields[0].textContent;
+    const cityName = STORAGE.getLastLocation();
     API.sendRequest(cityName, setHTML);
 
     renderFavourites();
