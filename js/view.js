@@ -1,4 +1,4 @@
-import API from "./api.js";
+import API from "./API.js";
 import STORAGE from "./storage.js";
 
 const UI = {
@@ -105,7 +105,7 @@ function handleClick(event) {
     if (event.target.className == 'favourite-cross') {
         removeFavourite(event.target);
     }
-    
+
     if (event.target.className == 'favourite-city-name') {
         const cityName = event.target.textContent;
         API.sendRequest(cityName, setHTML);
