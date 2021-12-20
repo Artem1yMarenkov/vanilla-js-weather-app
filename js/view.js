@@ -1,19 +1,6 @@
 import API from "./API.js";
 import STORAGE from "./storage.js";
-
-const UI = {
-    tabs: document.querySelectorAll('.tab'),
-    slides: document.querySelectorAll('.slide'),
-    cityNameFields: document.querySelectorAll('.city-name'),
-    favouriteItems: [...document.querySelectorAll('.favourite-item')],
-
-    activeTab: document.querySelector('.tab._active'),
-    form: document.querySelector('.search-form'),
-    tempField: document.querySelector('.temperature'),
-    weatherIcon: document.querySelector('.weather-icon'),
-    addFavouriteBtn: document.querySelector('.add-favourite'),
-    favouritesList: document.querySelector('.favourites'),
-}
+import UI from "./ui.js";
 
 
 function checkHeart() {
@@ -28,9 +15,13 @@ function checkHeart() {
 
 
 function setHTML(data) {
-    UI.cityNameFields.forEach(el => el.innerHTML = data["name"]);
-    UI.tempField.innerHTML = `${Math.round(data['main']['temp'])}&#176`;
-    UI.weatherIcon.src = `https://openweathermap.org/img/wn/${data['weather'][0]['icon']}@2x.png`;
+    UI.cityNameFields.forEach(el => el.innerHTML = data.name);
+    UI.tempFields.forEach(el => el.innerHTML = `${Math.round(data.main.temp)}&#176`);
+    UI.weatherIcon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+    UI.weather.innerHTML = data.weather[0].main;
+    UI.feelsLike.innerHTML = Math.round(data.main.feels_like);
+    UI.sunRise.innerHTML = data.sys.sunrise;
+    UI.sunSet.innerHTML = data.sys.sunset;
 
     STORAGE.setLastLocation(data['name']);
     checkHeart();
