@@ -12,9 +12,7 @@ const Storage = {
             console.log(`${action} storage has been created!`);
         }
 
-        const storage = JSON.parse(localStorage.getItem(action));
-
-        return storage;
+        return JSON.parse(localStorage.getItem(action));
     },
 
     set(action, data) {
@@ -66,7 +64,6 @@ function getLastLocation() {
 
     return Storage.get(ACTIONS.lastLocation);
 }
-
 
 
 export default { 

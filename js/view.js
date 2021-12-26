@@ -23,6 +23,38 @@ function setHTML(data) {
     UI.sunRise.innerHTML = data.sys.sunrise;
     UI.sunSet.innerHTML = data.sys.sunset;
 
+    UI.forecastList.innerHTML = '';
+    const forecast = data.list.splice(0, 3);
+    
+    forecast.forEach(data => {
+        const forecastItem = document.createElement('div');
+        const date = new Date(data.dt_txt);
+        const month = String(date).split(' ')[1];
+
+
+        forecastItem.className = 'forecast-item';
+        forecastItem.innerHTML = `
+            <div class="date-time">
+                <p class="date">${date.getDate()} ${month}</p>
+                <p class="time">${date.getHours()}:${date.getMinutes()}</p>
+            </div>
+
+            <div class="temp-forecast">
+                <div class="temp">
+                    <p>Temperature: ${Math.round(data.main.temp)}</p>
+                    <p>Feels like: ${Math.round(data.main.feels_like)}</p>
+                </div>
+                <div class="forecast-info">
+                    <p>${data.weather[0].main}</p>
+                    <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="rain">
+                </div>
+            </div>
+        `;
+
+        UI.forecastList.appendChild(forecastItem);
+    });
+
+
     STORAGE.setLastLocation(data['name']);
     checkHeart();
 }
@@ -59,7 +91,6 @@ function removeFavourite(element) {
 
     renderFavourites();
 }
-
 
 
 function renderFavourites() {

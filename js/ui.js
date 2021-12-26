@@ -4,6 +4,7 @@ const UI = {
     cityNameFields: document.querySelectorAll('.city-name'),
     favouriteItems: [...document.querySelectorAll('.favourite-item')],
     tempFields: document.querySelectorAll('.temperature'),
+    forecastItems: [...document.querySelectorAll('.forecast-item')],
 
     activeTab: document.querySelector('.tab._active'),
     form: document.querySelector('.search-form'),
@@ -15,6 +16,8 @@ const UI = {
     weather: document.querySelector('.weather'),
     sunRise: document.querySelector('.sunrise'),
     sunSet: document.querySelector('.sunset'),
+
+    forecastList: document.querySelector('.forecast'),
 }
 
 export default UI;
